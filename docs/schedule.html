@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>開発工程表 — ほっとパスシステム開発（第1段階）</title>
+<style>
+@page{size:A4;margin:18mm}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:#1a1a1a;
+  max-width:210mm;margin:0 auto;padding:18mm;font-size:10.5pt;line-height:1.7}
+.head{text-align:center;border-bottom:3px double #333;padding-bottom:8mm;margin-bottom:8mm}
+.head h1{font-size:22pt;letter-spacing:10px;font-weight:600}
+.meta{display:flex;justify-content:space-between;font-size:9pt;color:#444;margin-bottom:6mm}
+h2{font-size:11pt;border-left:4px solid #c8a96a;padding-left:8px;margin:7mm 0 3mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th,td{border:1px solid #bbb;padding:5px 8px;text-align:left;vertical-align:top}
+th{background:#f4f0e8;font-weight:600}
+.gantt{width:100%;border-collapse:collapse;font-size:8.5pt;margin:4mm 0}
+.gantt th,.gantt td{border:1px solid #bbb;padding:4px 3px;text-align:center}
+.gantt .lbl{text-align:left;width:22%}
+.gantt .fill{background:#c8a96a}
+.gantt .milestone{background:#e8d5a8;font-weight:700}
+.note{font-size:8.5pt;color:#555}
+.foot{margin-top:12mm;text-align:right;font-size:9pt;color:#444;border-top:1px solid #ccc;padding-top:4mm}
+@media print{body{padding:0}}
+</style>
+</head>
+<body>
+<div class="head"><h1>開 発 工 程 表</h1></div>
+<div class="meta"><span>作成日：2026年10月8日</span><span>案件：ほっとパス システム開発（第1段階）</span></div>
+<p>目標：<b>2027年4月 サービスイン</b>（導入企業様 約200名への本格展開）</p>
+
+<h2>マイルストーン一覧</h2>
+<table>
+<tr><th style="width:16%">時期</th><th style="width:26%">工程</th><th>成果物・節目</th></tr>
+<tr><td>10月</td><td>要件確定・契約</td><td>御見積書・本工程表の確定 → 正式発注 → 着手金</td></tr>
+<tr><td>11月〜12月</td><td>第1期開発（会員側）</td><td>PWA会員証・QR入館・ポイント消費の実装</td></tr>
+<tr><td>1月</td><td>第2期開発（管理側）</td><td>運営者管理画面・Excel一括登録・月次集計CSV</td></tr>
+<tr><td>1月末</td><td><b>中間検収</b></td><td>会員側PWAの実機検証（御社スマートフォンで確認）</td></tr>
+<tr><td>2月</td><td>統合テスト・導入準備</td><td>会員⇄管理の結合確認・QR卓上POP発行・名簿データ受領</td></tr>
+<tr><td>3月</td><td>パイロット運用</td><td>限定メンバー（御社社内 数十名）での実地検証・修正</td></tr>
+<tr><td>4月</td><td><b>本格リリース</b></td><td>導入企業様（約200名）への本展開 → <b>納品検収</b></td></tr>
+</table>
+
+<h2>工程図</h2>
+<table class="gantt">
+<tr><th class="lbl">工程</th><th>10月</th><th>11月</th><th>12月</th><th>1月</th><th>2月</th><th>3月</th><th>4月</th></tr>
+<tr><td class="lbl">契約・要件確定</td><td class="fill"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="lbl">会員側開発</td><td></td><td class="fill"></td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="lbl">管理側開発</td><td></td><td></td><td></td><td class="fill"></td><td></td><td></td><td></td></tr>
+<tr><td class="lbl">中間検収</td><td></td><td></td><td></td><td class="milestone">◆</td><td></td><td></td><td></td></tr>
+<tr><td class="lbl">統合テスト・導入準備</td><td></td><td></td><td></td><td></td><td class="fill"></td><td></td><td></td></tr>
+<tr><td class="lbl">パイロット運用</td><td></td><td></td><td></td><td></td><td></td><td class="fill"></td><td></td></tr>
+<tr><td class="lbl">本格リリース・納品検収</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="milestone">◆</td></tr>
+</table>
+
+<h2>検収ポイント（御社確認の節目）</h2>
+<table>
+<tr><th style="width:20%">検収</th><th style="width:16%">時期</th><th>確認内容</th></tr>
+<tr><td><b>中間検収</b></td><td>1月末</td><td>会員側PWA：会員証→QR読取→コース選択→入館確定の実機確認</td></tr>
+<tr><td><b>納品検収</b></td><td>4月</td><td>管理画面・月次集計CSV・会員側の全工程確認</td></tr>
+</table>
+
+<h2>御社側のスケジュール（あわせて必要な動き）</h2>
+<table>
+<tr><th style="width:16%">時期</th><th>御社のタスク</th></tr>
+<tr><td>10月中</td><td>見積・工程の社内稟議 → 正式発注</td></tr>
+<tr><td>12月頃</td><td>提携施設様との正式契約（QR卓上POP設置の合意）</td></tr>
+<tr><td>2月頃</td><td>導入企業様からの名簿Excel受領（社員番号/氏名/メールアドレス）</td></tr>
+<tr><td>3月</td><td>パイロット参加者の選定・周知</td></tr>
+</table>
+
+<h2>リスクと対策</h2>
+<table>
+<tr><th style="width:30%">リスク</th><th>対策</th></tr>
+<tr><td>4月宣言の納期圧力</td><td>第1段階に絞ったスコープで余裕のある工程を確保</td></tr>
+<tr><td>提携施設の交渉遅延</td><td>QR卓上POPは「置くだけ」で導入可能——影響を最小化</td></tr>
+<tr><td>名簿データの形式不揃い</td><td>取込様式テンプレを先行ご提供——2月に余裕を持って確認</td></tr>
+<tr><td>パイロットでの運用課題</td><td>3月に実地検証期間を確保——本格展開前に修正</td></tr>
+</table>
+
+<p class="note" style="margin-top:6mm">※工程は正式発注を起点とした計画です。発注時期の変動に応じて調整いたします。</p>
+
+<div class="foot">COAS開発班<br>（作成：2026年10月8日）</div>
+</body>
+</html>

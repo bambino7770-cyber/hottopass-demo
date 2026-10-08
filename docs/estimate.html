@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>御見積書 — ほっとパスシステム開発（第1段階）</title>
+<style>
+@page{size:A4;margin:18mm}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:#1a1a1a;
+  max-width:210mm;margin:0 auto;padding:18mm;font-size:10.5pt;line-height:1.7}
+.head{text-align:center;border-bottom:3px double #333;padding-bottom:8mm;margin-bottom:8mm}
+.head h1{font-size:22pt;letter-spacing:12px;font-weight:600}
+.meta{display:flex;justify-content:space-between;font-size:9pt;color:#444;margin-bottom:6mm}
+.to{font-size:12pt;margin-bottom:4mm}
+.to .name{font-size:14pt;font-weight:700;border-bottom:1px solid #333;padding-bottom:2px}
+.amt{background:#f8f6f2;border:2px solid #c8a96a;padding:6mm;text-align:center;margin:6mm 0}
+.amt .l{font-size:9pt;color:#666}
+.amt .v{font-size:20pt;font-weight:700;color:#8b6914;margin:2mm 0}
+h2{font-size:11pt;border-left:4px solid #c8a96a;padding-left:8px;margin:7mm 0 3mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th,td{border:1px solid #bbb;padding:5px 8px;text-align:left;vertical-align:top}
+th{background:#f4f0e8;font-weight:600;width:30%}
+.note{font-size:8.5pt;color:#555}
+.foot{margin-top:12mm;text-align:right;font-size:9pt;color:#444;border-top:1px solid #ccc;padding-top:4mm}
+@media print{body{padding:0}}
+</style>
+</head>
+<body>
+<div class="head"><h1>御 見 積 書</h1></div>
+<div class="meta"><span>発行日：2026年10月8日</span><span>見積番号：COAS-2026-018-E01</span></div>
+<div class="to"><span class="name">株式会社いろは　御中</span>
+  <div style="margin-top:3mm;font-size:10pt">件名：福利厚生サービス「ほっとパス」システム開発（第1段階）</div></div>
+<div class="amt"><div class="l">御見積金額</div>
+  <div class="v">1,500,000円（税別）／ 1,650,000円（税込）</div>
+  <div class="l">上記金額には下記「開発範囲」の全項目を含みます</div></div>
+
+<h2>開発範囲（第1段階）</h2>
+<table>
+<tr><th>会員側スマホアプリ</th>
+  <td>企業メール＋パスワードログイン（再設定機能付）・PWAホーム画面起動・
+  会員証（会社名/氏名/社員番号/残ポイント・秒単位時計）・施設固定QR読取・
+  コース選択・割増告知・ポイント消費（月3,000pt自動付与・1日1回制限）・
+  フロント確認用大表示完了画面・利用履歴・お知らせ</td></tr>
+<tr><th>運営者管理画面</th>
+  <td>企業・会員登録（社員番号/氏名/メールアドレスのExcel一括アップロード）・
+  施設/コース/料金/割増の画面設定・固定QR発行・入館記録確認/取消・
+  月次集計（企業別利用人数・施設別精算額）CSV出力</td></tr>
+<tr><th>インフラ・導入</th>
+  <td>本番サーバー・ドメイン設定・HTTPS化・データ保管・
+  iPhone実機検証・施設導入リハーサル・管理画面操作説明（1回）</td></tr>
+</table>
+
+<h2>お支払い条件</h2>
+<table>
+<tr><th>着手時 40%</th><td>600,000円（税別）—— 開発着手時</td></tr>
+<tr><th>中間検収 30%</th><td>450,000円（税別）—— 会員側PWA実機検証完了時</td></tr>
+<tr><th>納品検収 30%</th><td>450,000円（税別）—— 管理画面・月次集計納品時</td></tr>
+</table>
+
+<h2>含まれないもの（第2段階・別途ご相談）</h2>
+<table>
+<tr><td>・導入企業様向け・提携施設様向けの個別管理画面<br>
+・サーバー保守・運用監視（別途月額でご相談）<br>
+・外部決済システム連携（第1段階はフロント現金精算のため不要）</td></tr>
+</table>
+
+<h2>その他</h2>
+<table>
+<tr><th>有効期限</th><td>発行より30日（2026年11月7日まで）</td></tr>
+<tr><th>納期</th><td>別紙「開発工程表」の通り（2027年4月本格リリース）</td></tr>
+<tr><th>変更</th><td>要件変更が生じた場合は変更見積を都度お出しします</td></tr>
+</table>
+
+<p class="note" style="margin-top:6mm">
+※本見積書は第1段階（MVP）の範囲に基づくものです。第2段階以降の開発は
+別途ご相談の上、個別にお見積もりいたします。</p>
+
+<div class="foot">COAS開発班<br>（発行：2026年10月8日）</div>
+</body>
+</html>

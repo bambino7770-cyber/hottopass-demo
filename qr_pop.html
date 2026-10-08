@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ほっとパス 施設QRコード — 卓上POP（テスト用）</title>
+<style>
+  @page { size: A4; margin: 12mm; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;
+         background:#f4f0e8; color:#2b3a55; }
+  .pop { width:148mm; min-height:200mm; margin:10mm auto; padding:14mm;
+         background:#fffdf8; border:2px solid #2b3a55; border-radius:4mm;
+         box-shadow:0 2mm 6mm rgba(43,58,85,.15);
+         display:flex; flex-direction:column; align-items:center;
+         page-break-after:always; }
+  .pop:last-child { page-break-after:auto; }
+  .brand { font-size:10pt; letter-spacing:.35em; color:#a07840;
+           border-bottom:1px solid #a07840; padding-bottom:2mm; margin-bottom:8mm; }
+  h1 { font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+       font-size:24pt; font-weight:600; margin-bottom:2mm; }
+  .eng { font-size:9pt; color:#8a7d6b; letter-spacing:.2em; margin-bottom:10mm; }
+  .qrframe { padding:6mm; border:1.5px solid #a07840; border-radius:3mm;
+             background:#fff; }
+  .qrframe img { display:block; width:72mm; height:72mm; }
+  .howto { margin-top:10mm; font-size:11pt; line-height:2; text-align:center; }
+  .howto b { color:#a07840; }
+  .code { margin-top:6mm; font-size:9pt; color:#8a7d6b;
+          font-family:Menlo,monospace; }
+  .foot { margin-top:auto; padding-top:8mm; font-size:8pt; color:#b0a48e; }
+  @media print { body { background:#fff; } .pop { box-shadow:none; margin:0 auto; } }
+</style>
+</head>
+<body>
+
+<div class="pop">
+  <div class="brand">いろはグループ 福利厚生サービス</div>
+  <h1>湯処 ゆらり</h1>
+  <div class="eng">HOTTO PASS — FACILITY CHECK-IN</div>
+  <div class="qrframe"><img src="qr_yurari.png" alt="QR-YURARI"></div>
+  <div class="howto">
+    <b>ほっとパス会員の方へ</b><br>
+    アプリの「QRコードを読み取る」から<br>
+    このコードにカメラを向けてください
+  </div>
+  <div class="code">施設コード：QR-YURARI</div>
+  <div class="foot">ほっとパス — テスト用卓上POP（本番POPは本開発で発行）</div>
+</div>
+
+<div class="pop">
+  <div class="brand">いろはグループ 福利厚生サービス</div>
+  <h1>サウナ オアシス</h1>
+  <div class="eng">HOTTO PASS — FACILITY CHECK-IN</div>
+  <div class="qrframe"><img src="qr_oasis.png" alt="QR-OASIS"></div>
+  <div class="howto">
+    <b>ほっとパス会員の方へ</b><br>
+    アプリの「QRコードを読み取る」から<br>
+    このコードにカメラを向けてください
+  </div>
+  <div class="code">施設コード：QR-OASIS</div>
+  <div class="foot">ほっとパス — テスト用卓上POP（本番POPは本開発で発行）</div>
+</div>
+
+<div class="pop" style="border-style:dashed">
+  <div class="brand">いろはグループ 福利厚生サービス</div>
+  <h1>天然温泉 茜の湯</h1>
+  <div class="eng">HOTTO PASS — FACILITY CHECK-IN</div>
+  <div class="qrframe"><img src="qr_akane.png" alt="QR-AKANE"></div>
+  <div class="howto">
+    <b>ほっとパス会員の方へ</b><br>
+    アプリの「QRコードを読み取る」から<br>
+    このコードにカメラを向けてください
+  </div>
+  <div class="code">施設コード：QR-AKANE</div>
+  <div class="foot" style="color:#a07840">※提携準備中（マスタ先行登録テスト用）</div>
+</div>
+
+</body>
+</html>

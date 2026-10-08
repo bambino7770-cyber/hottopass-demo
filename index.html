@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>ほっとパス — 会員証</title>
+<style>
+:root{
+  /* 和モダン調——深い藍鉄色 × 金茶 × 生成り（上質なスパ/旅館の品格） */
+  --orange:#a87f4d; --orange-d:#8a6739; --ink:#2b2b28; --sub:#8a8577;
+  --bg:#f4f0e7; --card:#fffdf8; --line:#e5ddcb; --good:#2e6b50; --warn:#b0453a;
+  --gold:#c9a961; --iron:#3a4a52; --iron-d:#26333a;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;
+  background:var(--bg);color:var(--ink);max-width:430px;margin:0 auto;
+  min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+header{background:linear-gradient(150deg,#33424e 0%,#232f38 60%,#1e2a30 100%);
+  color:#f2ead6;padding:calc(env(safe-area-inset-top) + 16px) 16px 15px;
+  text-align:center}
+header .mark{display:flex;align-items:center;justify-content:center;gap:10px}
+header .wordmark{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
+  font-size:21px;font-weight:700;letter-spacing:4px;color:#f2ead6}
+header .brand{font-size:10px;letter-spacing:3px;color:var(--gold);margin-top:4px}
+header small{display:block;font-weight:400;font-size:10px;color:#b9ad8f;
+  margin-top:5px;letter-spacing:1px}
+main{flex:1;padding:16px 14px 90px;overflow-y:auto}
+.card{background:var(--card);border-radius:16px;padding:18px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px}
+.lbl{font-size:11px;color:var(--sub);letter-spacing:.4px}
+.big{font-size:32px;font-weight:700}
+.row{display:flex;justify-content:space-between;align-items:baseline}
+.mut{color:var(--sub);font-size:12px}
+.hr{border:none;border-top:1px dashed var(--line);margin:12px 0}
+.clock{background:#26333a;color:#f2ead6;border-radius:12px;text-align:center;
+  padding:10px;font-variant-numeric:tabular-nums}
+.clock .d{font-size:12px;color:#bbb}
+.clock .t{font-size:26px;font-weight:700;letter-spacing:2px}
+.btn{display:block;width:100%;border:none;border-radius:14px;padding:16px;
+  font-size:17px;font-weight:700;cursor:pointer;text-align:center;
+  text-decoration:none}
+.btn-p{background:var(--orange);color:#fff;box-shadow:0 3px 0 var(--orange-d)}
+.btn-p:active{transform:translateY(2px);box-shadow:none}
+.btn-g{background:#ece7e0;color:var(--ink)}
+.btn-o{background:#fff;border:2px solid var(--orange);color:var(--orange)}
+nav{position:fixed;bottom:0;left:0;right:0;max-width:430px;margin:0 auto;
+  background:#fff;border-top:1px solid var(--line);display:flex;
+  padding-bottom:env(safe-area-inset-bottom)}
+nav a{flex:1;text-align:center;padding:8px 0 10px;text-decoration:none;
+  color:var(--sub);font-size:10px}
+nav a.on{color:var(--orange)}
+nav .ic{font-size:20px;display:block;margin-bottom:2px}
+.badge{display:inline-block;background:#f3ead6;color:var(--orange-d);
+  border-radius:8px;padding:2px 8px;font-size:11px;font-weight:600}
+.tag{font-size:11px;padding:2px 8px;border-radius:6px;background:#eef0ea;color:#5f6b62}
+.course{border:1.5px solid var(--line);border-radius:14px;padding:14px;
+  margin-bottom:10px;background:#fff}
+.course .name{font-weight:700;font-size:16px}
+.course .price{font-size:20px;font-weight:700;color:var(--orange-d)}
+.course .sub{font-size:12px;color:var(--sub);margin-top:2px}
+.course button{margin-top:10px}
+.note{font-size:12px;color:var(--sub);line-height:1.6}
+.warnbox{background:#fff5f3;border:1px solid #ffd4cc;border-radius:12px;
+  padding:12px;font-size:13px;color:#b03a2e;line-height:1.6}
+.okbox{background:#eef5f0;border:1px solid #c2dcd0;border-radius:12px;
+  padding:16px;text-align:center}
+.okbox .maru{font-size:44px}
+.list{list-style:none}
+.list li{padding:12px 4px;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;font-size:14px}
+.scr-title{font-size:15px;font-weight:700;margin:4px 0 12px}
+input,select{width:100%;padding:12px;border:1.5px solid var(--line);
+  border-radius:10px;font-size:16px;margin:6px 0 12px;background:#fff}
+label{font-size:12px;color:var(--sub);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:9px 6px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--sub);font-weight:600;font-size:11px}
+.qrbox{background:#1d1d1d;border-radius:14px;aspect-ratio:1;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;color:#888;
+  margin-bottom:14px;overflow:hidden;position:relative}
+.qrbox video{width:100%;height:100%;object-fit:cover;position:absolute}
+.qrbox .hint{position:relative;z-index:2;text-align:center;padding:16px}
+.toplink{display:block;text-align:right;font-size:12px;color:var(--orange-d);
+  margin-bottom:8px;text-decoration:none}
+h3{font-size:13px;color:var(--sub);margin:18px 0 8px;font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <div class="mark">
+    <img src="hottopass_logo_dark.svg" alt="ほっとパス"
+         style="height:42px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))">
+  </div>
+  <div class="brand">いろは グループ</div>
+  <small>温浴施設 福利厚生パスポート（見本）</small>
+</header>
+<main id="app"></main>
+<nav id="nav"></nav>
+<script src="jsqr.min.js"></script>
+<script>
+/* ============================================================
+   ほっとパス モックアップ（第1段階・実機検証用）
+   - localStorageに状態を保持（サーバー不要の見本）
+   - hash routing で画面遷移
+   ============================================================ */
+const DB_KEY = 'hotpass_mock_v2';
+const todayKey = () => new Date().toISOString().slice(0,10);
+const fmt = n => n.toLocaleString('ja-JP');
+const isWeekend = () => [0,6].includes(new Date().getDay());
+
+function seed(){
+  if(localStorage.getItem(DB_KEY)) return;
+  const db = {
+    member: { company:'株式会社いろは', name:'田中 守', emp:'IRO-0094', points:3000 },
+    facilities: [
+      { id:'yurari', name:'湯処 ゆらり', code:'QR-YURARI',
+        surcharge:{ weekend:200, night:0, nightLabel:null },
+        courses:[
+          { id:'y1', name:'基本入浴', pts:1000 },
+          { id:'y2', name:'岩盤浴セット', pts:1600 },
+        ]},
+      { id:'oasis', name:'サウナ オアシス', code:'QR-OASIS',
+        surcharge:{ weekend:300, night:500, nightLabel:'24時以降' },
+        courses:[
+          { id:'o1', name:'90分コース', pts:1200 },
+          { id:'o2', name:'フリータイム', pts:2000 },
+        ]},
+      { id:'akane', name:'天然温泉 茜の湯', code:'QR-AKANE', status:'提携準備中',
+        surcharge:{ weekend:150, night:0, nightLabel:null },
+        courses:[
+          { id:'a1', name:'通常入館', pts:1100 },
+        ]},
+    ],
+    visits: [],   // {ts, facility, course, pts, surcharge}
+    notice: '【運営より】ほっとパス試用版へようこそ。本見本では施設・コース・料金は管理画面から変更できます。',
+    adminPin: '0000',
+  };
+  localStorage.setItem(DB_KEY, JSON.stringify(db));
+}
+const load = () => JSON.parse(localStorage.getItem(DB_KEY));
+const save = db => localStorage.setItem(DB_KEY, JSON.stringify(db));
+const usedToday = db => db.visits.some(v => v.ts.slice(0,10) === todayKey());
+
+/* ---------- 画面 ---------- */
+const R = {
+  home(){
+    const db = load(), m = db.member, used = usedToday(db);
+    return `
+    <a class="toplink" href="#/admin">管理者入口 →</a>
+    <div class="card" style="text-align:center">
+      <div class="lbl">会員証</div>
+      <div style="margin:10px 0 2px">${m.company}</div>
+      <div class="big" style="font-size:24px">${m.name} 様</div>
+      <div class="mut">社員番号：${m.emp}</div>
+      <div class="hr"></div>
+      <div class="lbl">保有ポイント</div>
+      <div class="big" style="color:var(--orange-d)">${fmt(m.points)}<span style="font-size:16px"> pt</span></div>
+    </div>
+    <div class="clock"><div class="d" id="cd"></div><div class="t" id="ct"></div></div>
+    <div style="height:14px"></div>
+    ${used
+      ? `<div class="okbox"><div class="maru">♨</div><b>本日はご利用済みです</b><div class="mut" style="margin-top:6px">また明日お越しください</div></div>`
+      : `<a class="btn btn-p" href="#/scan">QRコードを読み取る</a>`}
+    <div class="note" style="text-align:center;margin-top:12px">
+      本日のご利用：${used?'<b style="color:var(--good)">利用済み</b>':'<b>未利用</b>'}（1日1回まで）
+    </div>`;
+  },
+
+  scan(){
+    const db = load();
+    return `
+    <div class="scr-title">施設のQRコードを読み取り</div>
+    <div class="qrbox" id="qrview">
+      <div class="hint">📷 施設フロントのQRコードを<br>カメラに向けてください<br><br>
+      <span class="mut" style="color:#aaa">または下から施設コードを入力</span></div>
+      <video id="qv" playsinline muted></video>
+    </div>
+    <label>施設コード（見本用・手入力）</label>
+    <select id="fcode">
+      <option value="">— 選択 —</option>
+      ${db.facilities.map(f=>`<option value="${f.id}">${f.name}（${f.code}）</option>`).join('')}
+    </select>
+    <a class="btn btn-o" href="#/" style="margin-top:4px">戻る</a>`;
+  },
+
+  courses(facId){
+    const db = load();
+    const f = db.facilities.find(x=>x.id===facId);
+    if(!f) return `<div class="warnbox">施設が見つかりません</div><a class="btn btn-g" href="#/">戻る</a>`;
+    const wk = isWeekend();
+    const now = new Date().getHours();
+    const night = f.surcharge.night && (now>=0 && now<5);
+    const wkSur = wk ? f.surcharge.weekend : 0;
+    const sur = wkSur + (night ? f.surcharge.night : 0);
+    return `
+    <div class="scr-title">${f.name}——コースを選択${f.status?` <span style="font-size:11px;background:#a07840;color:#fff;border-radius:8px;padding:2px 8px;vertical-align:middle">${f.status}</span>`:''}</div>
+    ${sur?`<div class="warnbox" style="margin-bottom:12px">
+      ⚠️ 本日は割増料金があります<br>
+      ${wk&&f.surcharge.weekend?`・土日祝割増：別途 ${f.surcharge.weekend}円<br>`:''}
+      ${night?`・深夜割増（${f.surcharge.nightLabel||'深夜'}）：別途 ${f.surcharge.night}円`:''}
+      <div class="mut" style="margin-top:6px">割増分はポイントではなくフロントで現金等のお支払いとなります</div>
+    </div>`:''}
+    ${f.courses.map(c=>{
+      const pts = c.pts;
+      const lack = load().member.points < pts;
+      return `<div class="course">
+        <div class="row"><span class="name">${c.name}</span>
+          <span class="price">${fmt(pts)} pt</span></div>
+        <div class="sub">利用ポイント ${fmt(pts)}pt</div>
+        ${lack?`<div class="warnbox" style="margin-top:8px;padding:8px">残ポイント不足（保有 ${fmt(load().member.points)}pt）<br>差額はフロントでお支払いいただけます</div>`:''}
+        <button class="btn ${lack?'btn-g':'btn-p'}" onclick="go('#/confirm/${f.id}/${c.id}')">
+          ${lack?'フロント精算で入館':'このコースで入館する'}</button>
+      </div>`;}).join('')}
+    <a class="btn btn-g" href="#/scan">施設を選び直す</a>`;
+  },
+
+  confirm(facId, cId){
+    const db = load(), f = db.facilities.find(x=>x.id===facId);
+    const c = f.courses.find(x=>x.id===cId);
+    const pts = c.pts;
+    return `
+    <div class="scr-title">入館の確認</div>
+    <div class="card">
+      <div class="row"><span class="lbl">施設</span><b>${f.name}</b></div>
+      <div class="hr"></div>
+      <div class="row"><span class="lbl">コース</span><b>${c.name}</b></div>
+      <div class="hr"></div>
+      <div class="row"><span class="lbl">消費ポイント</span>
+        <span class="big" style="font-size:26px;color:var(--orange-d)">${fmt(pts)} pt</span></div>
+      <div class="row" style="margin-top:8px"><span class="lbl">利用後残高</span>
+        <b>${fmt(Math.max(0, db.member.points-pts))} pt</b></div>
+    </div>
+    <div class="note">※この画面をフロントスタッフに見せて確定してください。確定すると本日のご利用は完了となります。</div>
+    <div style="height:10px"></div>
+    <button class="btn btn-p" onclick="checkin('${f.id}','${c.id}')">入館を確定する</button>
+    <div style="height:8px"></div>
+    <a class="btn btn-g" href="#/courses/${f.id}">戻る</a>`;
+  },
+
+  done(){
+    const db = load();
+    const v = db.visits[db.visits.length-1] || {};
+    return `
+    <div style="background:linear-gradient(160deg,#2e6b50,#1e523e);
+      border-radius:18px;padding:26px 18px;text-align:center;color:#fff;
+      margin-bottom:14px;box-shadow:0 4px 14px rgba(46,107,80,.3)">
+      <div style="font-size:48px;line-height:1">✓</div>
+      <div style="font-size:24px;font-weight:800;letter-spacing:1px;margin:8px 0 4px">
+        チェックイン完了</div>
+      <div style="background:rgba(255,255,255,.14);border-radius:12px;
+        padding:12px 8px;margin-top:12px">
+        <div style="font-size:22px;font-weight:800;letter-spacing:.5px">${v.facility||''}</div>
+        <div style="font-size:27px;font-weight:800;margin-top:6px">
+          ${v.course||''}　<span style="opacity:.92;font-size:20px">${fmt(v.pts||0)}pt利用</span></div>
+      </div>
+      <div style="margin-top:12px;background:rgba(0,0,0,.28);border-radius:12px;padding:12px 8px">
+        <div id="done_date" style="font-size:15px;opacity:.9;letter-spacing:1px"></div>
+        <div id="done_clock" style="font-variant-numeric:tabular-nums;
+          font-size:38px;font-weight:800;letter-spacing:3px;line-height:1.15"></div>
+      </div>
+      <div style="font-size:12px;opacity:.8;margin-top:8px">
+        ⏱ 上の秒数が今この場で動いています——本画面をフロントスタッフにご提示ください</div>
+    </div>
+    <a class="btn btn-p" href="#/">会員証へ戻る</a>`;
+  },
+
+  history(){
+    const db = load();
+    return `
+    <div class="scr-title">ご利用履歴</div>
+    ${db.visits.length?`<div class="card"><ul class="list">
+      ${db.visits.slice().reverse().map(v=>`<li>
+        <span>${v.ts.slice(0,10)}　${v.facility}<br><span class="mut">${v.course}</span></span>
+        <b>-${fmt(v.pts)}pt</b></li>`).join('')}
+    </ul></div>`:`<div class="card note">まだご利用はありません</div>`}`;
+  },
+
+  notice(){
+    const db = load();
+    return `<div class="scr-title">お知らせ</div>
+    <div class="card note" style="font-size:14px">${db.notice}</div>`;
+  },
+
+  settings(){
+    const m = load().member;
+    return `<div class="scr-title">設定</div>
+    <div class="card"><div class="lbl">会員情報</div>
+      <ul class="list">
+        <li><span>会社名</span><b>${m.company}</b></li>
+        <li><span>氏名</span><b>${m.name}</b></li>
+        <li><span>社員番号</span><b>${m.emp}</b></li>
+      </ul>
+      <div class="note" style="margin-top:10px">本見本はデータ初期化機能を含みます</div>
+      <button class="btn btn-g" onclick="if(confirm('見本データを初期状態に戻しますか？')){localStorage.removeItem(DB_KEY);location.href='#/';location.reload()}">データを初期化</button>
+    </div>`;
+  },
+
+  /* ---------- 管理画面（見本レベル） ---------- */
+  admin(){
+    const db = load();
+    const month = todayKey().slice(0,7);
+    const mv = db.visits.filter(v=>v.ts.startsWith(month));
+    return `
+    <a class="toplink" href="#/">← 会員画面へ</a>
+    <div class="scr-title">運営者 管理画面（見本）</div>
+    <div class="card">
+      <div class="lbl">今月の利用（${month}）</div>
+      <div class="row" style="margin-top:6px">
+        <span>入館件数 <b>${mv.length}件</b></span>
+        <span>ポイント消費 <b>${fmt(mv.reduce((s,v)=>s+v.pts,0))}pt</b></span>
+      </div>
+    </div>
+    <h3>施設・コース設定（コード改修なしで変更可能）</h3>
+    ${db.facilities.map(f=>`
+      <div class="card">
+        <div class="row"><b>${f.name}</b><span class="tag">${f.code}</span></div>
+        <div class="mut" style="margin:4px 0">割増：土日祝${f.surcharge.weekend}円 / 深夜${f.surcharge.night}円</div>
+        <ul class="list">${f.courses.map(c=>`<li><span>${c.name}</span>
+          <b>${fmt(c.pts)}pt${c.weekendPts?`（土日祝${fmt(c.weekendPts)}pt）`:''}</b></li>`).join('')}</ul>
+      </div>`).join('')}
+    <h3>施設の追加</h3>
+    <div class="card">
+      <label>施設名</label><input id="nf_name" placeholder="例：湯処 あじさい">
+      <label>施設コード（QRに印字）</label><input id="nf_code" placeholder="例：QR-AJISAI">
+      <button class="btn btn-o" onclick="addFacility()">施設を追加</button>
+    </div>
+    <div class="note">会員CSV一括登録・月次CSV出力・入館取消は第1段階の本開発で実装します</div>`;
+  },
+};
+
+/* ---------- 動作 ---------- */
+let clockTimer=null, stream=null, qrRaf=null;
+
+function render(){
+  const el = document.getElementById('app');
+  const h = location.hash.slice(2) || '';
+  const [page, ...args] = h.split('/');
+  clearInterval(clockTimer);
+  if(stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; }
+  if(qrRaf){ cancelAnimationFrame(qrRaf); qrRaf=null; }
+  const fn = R[page] || R.home;
+  el.innerHTML = fn(...args);
+  document.getElementById('nav').innerHTML =
+    (page && page.startsWith('admin')) ? '' : `
+    <a href="#/" class="${!page?'on':''}"><span class="ic">🏠</span>ホーム</a>
+    <a href="#/history" class="${page==='history'?'on':''}"><span class="ic">🕘</span>利用履歴</a>
+    <a href="#/notice" class="${page==='notice'?'on':''}"><span class="ic">🔔</span>お知らせ</a>
+    <a href="#/settings" class="${page==='settings'?'on':''}"><span class="ic">⚙️</span>設定</a>`;
+
+  if(page===''||!page){
+    const tick=()=>{const d=new Date();
+      const p=n=>String(n).padStart(2,'0');
+      const cd=document.getElementById('cd'), ct=document.getElementById('ct');
+      if(cd) cd.textContent=`${d.getFullYear()}/${p(d.getMonth()+1)}/${p(d.getDate())}`;
+      if(ct) ct.textContent=`${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;};
+    tick(); clockTimer=setInterval(tick,500);
+  }
+  if(page==='done'){
+    const tick=()=>{const d=new Date();
+      const p=n=>String(n).padStart(2,'0');
+      const el=document.getElementById('done_clock');
+      const dd=document.getElementById('done_date');
+      if(el) el.textContent=`${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+      if(dd) dd.textContent=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;};
+    tick(); clockTimer=setInterval(tick,500);
+  }
+  if(page==='scan'){
+    const sel=document.getElementById('fcode');
+    sel.onchange=()=>{ if(sel.value) go('#/courses/'+sel.value); };
+    // カメラQR読取（対応ブラウザのみ——非対応は手入力で案内）
+    if(navigator.mediaDevices?.getUserMedia){
+      navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}})
+        .then(s=>{stream=s; const v=document.getElementById('qv');
+          if(v){v.srcObject=s; v.play();}
+          document.querySelector('#qrview .hint').style.display='none';
+          // QRデコードループ——施設コードを認識したらコース選択へ自動遷移
+          // フレームは最大640px幅に縮小して解析（高解像度そのままでは遅く反応が悪い）
+          const cv=document.createElement('canvas');
+          const cx=cv.getContext('2d',{willReadFrequently:true});
+          const dbx=load();
+          let scanTick=null;
+          const step=()=>{
+            if(!location.hash.startsWith('#/scan')){ qrRaf=null; return; }
+            if(v && v.readyState>=v.HAVE_ENOUGH_DATA && window.jsQR && v.videoWidth){
+              const sc=Math.min(1, 640/v.videoWidth);
+              cv.width=Math.round(v.videoWidth*sc); cv.height=Math.round(v.videoHeight*sc);
+              cx.drawImage(v,0,0,cv.width,cv.height);
+              const img=cx.getImageData(0,0,cv.width,cv.height);
+              const qr=jsQR(img.data,img.width,img.height,{inversionAttempts:'attemptBoth'});
+              if(qr && qr.data){
+                const code=qr.data.trim();
+                const f=dbx.facilities.find(x=>x.code===code || code.includes(x.code));
+                if(f){
+                  if(scanTick) clearInterval(scanTick);
+                  go('#/courses/'+f.id); return;
+                }
+              }
+            }
+            qrRaf=requestAnimationFrame(step);
+          };
+          qrRaf=requestAnimationFrame(step);
+          // スキャン中の視覚フィードバック（枠内に走査線アニメーション）
+          const qv=document.getElementById('qrview');
+          if(qv && !document.getElementById('scanline')){
+            const st=document.createElement('style');
+            st.id='scanline';
+            st.textContent='#qrview::after{content:"";position:absolute;left:8%;right:8%;height:2px;background:rgba(200,169,106,.9);box-shadow:0 0 8px rgba(200,169,106,.8);animation:scanmv 1.6s ease-in-out infinite}@keyframes scanmv{0%,100%{top:12%}50%{top:88%}}';
+            document.head.appendChild(st);
+          }
+          })
+        .catch(()=>{/* カメラ不可→手入力のみで案内済み */});
+    }
+  }
+}
+function go(h){ location.hash=h; }
+function checkin(facId, cId){
+  const db=load();
+  if(usedToday(db)){ alert('本日は既にご利用済みです'); go('#/'); return; }
+  const f=db.facilities.find(x=>x.id===facId), c=f.courses.find(x=>x.id===cId);
+  const pts=c.pts;
+  const lack=db.member.points<pts;
+  if(lack && !confirm(`ポイントが不足しています（保有${fmt(db.member.points)}pt / 必要${fmt(pts)}pt）\n差額はフロントでお支払いの上、入館処理を行いますか？`)) return;
+  db.member.points=Math.max(0, db.member.points-pts);
+  db.visits.push({ts:new Date().toISOString(), facility:f.name, course:c.name, pts});
+  save(db); go('#/done');
+}
+function addFacility(){
+  const db=load();
+  const n=document.getElementById('nf_name').value.trim();
+  const c=document.getElementById('nf_code').value.trim();
+  if(!n||!c){alert('施設名とコードを入力してください');return;}
+  db.facilities.push({id:'f'+Date.now(), name:n, code:c,
+    surcharge:{weekend:0,night:0,nightLabel:null},
+    courses:[{id:'c'+Date.now(), name:'基本入浴', pts:1000, weekendPts:null}]});
+  save(db); render();
+}
+window.addEventListener('hashchange', render);
+seed(); render();
+</script>
+</body>
+</html>

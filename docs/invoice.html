@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>請求書 — ほっとパスシステム開発 着手金</title>
+<style>
+@page{size:A4;margin:18mm}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:#1a1a1a;
+  max-width:210mm;margin:0 auto;padding:18mm;font-size:10.5pt;line-height:1.7}
+.head{text-align:center;border-bottom:3px double #333;padding-bottom:8mm;margin-bottom:8mm}
+.head h1{font-size:22pt;letter-spacing:12px;font-weight:600}
+.meta{display:flex;justify-content:space-between;font-size:9pt;color:#444;margin-bottom:6mm}
+.to{font-size:12pt;margin-bottom:4mm}
+.to .name{font-size:14pt;font-weight:700;border-bottom:1px solid #333;padding-bottom:2px}
+.amt{background:#f8f6f2;border:2px solid #c8a96a;padding:6mm;text-align:center;margin:6mm 0}
+.amt .l{font-size:9pt;color:#666}
+.amt .v{font-size:20pt;font-weight:700;color:#8b6914;margin:2mm 0}
+h2{font-size:11pt;border-left:4px solid #c8a96a;padding-left:8px;margin:7mm 0 3mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th,td{border:1px solid #bbb;padding:5px 8px;text-align:left;vertical-align:top}
+th{background:#f4f0e8;font-weight:600;width:34%}
+.note{font-size:8.5pt;color:#555}
+.foot{margin-top:12mm;text-align:right;font-size:9pt;color:#444;border-top:1px solid #ccc;padding-top:4mm}
+@media print{body{padding:0}}
+</style>
+</head>
+<body>
+<div class="head"><h1>請 求 書</h1></div>
+<div class="meta"><span>発行日：2026年10月8日</span><span>請求書番号：COAS-2026-018-01</span></div>
+<div class="to"><span class="name">株式会社いろは　経理部　御中</span>
+  <div style="margin-top:3mm;font-size:10pt">件名：福利厚生サービス「ほっとパス」システム開発（第1段階）着手金</div></div>
+<div class="amt"><div class="l">ご請求金額（税込）</div>
+  <div class="v">660,000円</div>
+  <div class="l">内訳：着手金 600,000円（税別）＋ 消費税 60,000円</div></div>
+
+<h2>内訳</h2>
+<table>
+<tr><th>着手金</th><td>委託料総額 1,500,000円（税別）の40% —— 600,000円<br>
+  <span class="note">業務委託契約書 第4条（お支払い条件）に基づく</span></td></tr>
+<tr><th>消費税（10%）</th><td>60,000円</td></tr>
+</table>
+
+<h2>お支払い条件</h2>
+<table>
+<tr><th>お支払期日</th><td>本請求書のご受領後 30日以内（目安：2026年11月7日）</td></tr>
+<tr><th>お支払方法</th><td>銀行振込（振込手数料は御社ご負担にてお願いいたします）<br>
+  <span class="note">振込先口座は契約締結時に別途メールにてご案内いたします</span></td></tr>
+<tr><th>今後のご請求</th><td>中間検収時 30%（450,000円・税別）／ 納品検収時 30%（450,000円・税別）<br>
+  <span class="note">各節目の検収合格後に別途ご請求いたします</span></td></tr>
+</table>
+
+<div class="foot">COAS開発班<br>（業務委託契約書 締結後に開発へ着手いたします）</div>
+</body>
+</html>
